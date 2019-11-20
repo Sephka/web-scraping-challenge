@@ -9,6 +9,14 @@ import pandas as pd
 import datetime as dt
 
 # ◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘
+#                  Windows
+# ◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘
+
+# Set executable path & initialize chrome browser
+# executable_path = {"executable_path": "./chromedriver.exe"}
+# browser = Browser("chrome", **executable_path)
+
+# ◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘
 #                    Mac
 # ◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘
 
@@ -17,20 +25,14 @@ import datetime as dt
 # browser = Browser("chrome", **executable_path, headless=False)
 
 # ◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘
-#                  Windows
-# ◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘
-
-# Set executable path & initialize chrome browser
-executable_path = {"executable_path": "./chromedriver.exe"}
-browser = Browser("chrome", **executable_path)
-
-
-# ◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘
 #               NASA Mars News
 # ◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘
 
 # NASA mars news site web scraper
 def mars_news(browser):
+
+    executable_path = {"executable_path": "./chromedriver.exe"}
+    browser = Browser("chrome", **executable_path)
 
     # Visit the NASA Mars News Site
     url = "https://mars.nasa.gov/news/"
@@ -67,6 +69,9 @@ def mars_news(browser):
 # NASA JPL (Jet Propulsion Laboratory) site web scraper
 def featured_image(browser):
 
+    executable_path = {"executable_path": "./chromedriver.exe"}
+    browser = Browser("chrome", **executable_path)
+
     # Visit the NASA JPL (Jet Propulsion Laboratory) site
     url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
     browser.visit(url)
@@ -102,6 +107,9 @@ def featured_image(browser):
 # Mars Weather Twitter account web scraper
 def twitter_weather(browser):
 
+    executable_path = {"executable_path": "./chromedriver.exe"}
+    browser = Browser("chrome", **executable_path)
+
     # Visit the Mars Weather Twitter account
     url = "https://twitter.com/marswxreport?lang=en"
     browser.visit(url)
@@ -128,6 +136,9 @@ def twitter_weather(browser):
 # Mars Facts Web Scraper
 def mars_facts():
 
+    executable_path = {"executable_path": "./chromedriver.exe"}
+    browser = Browser("chrome", **executable_path)
+
     # Visit the Mars Facts site using Pandas to read
     try:
         df = pd.read_html("https://space-facts.com/mars/")[0]
@@ -145,6 +156,9 @@ def mars_facts():
 
 # Mars Hemispheres web scraper
 def hemisphere(browser):
+
+    executable_path = {"executable_path": "./chromedriver.exe"}
+    browser = Browser("chrome", **executable_path)
 
     # Visit the USGS Astrogeology Science center site
     url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
@@ -177,6 +191,9 @@ def hemisphere(browser):
 # Helper Function
 def scrape_hemisphere(html_text):
 
+    executable_path = {"executable_path": "./chromedriver.exe"}
+    browser = Browser("chrome", **executable_path)
+
     hemisphere_soup = BeautifulSoup(html_text, "html.parser")
     try: 
         title_element = hemisphere_soup.find("h2", class_="title").get_text()
@@ -196,8 +213,8 @@ def scrape_hemisphere(html_text):
 # ◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘
 
 def scrape_all():
-    executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
-    browser = Browser("chrome", **executable_path, headless=False)
+    executable_path = {"executable_path": "./chromedriver.exe"}
+    browser = Browser("chrome", **executable_path)
     news_title, news_paragraph = mars_news(browser)
     img_url = featured_image(browser)
     mars_weather = twitter_weather(browser)

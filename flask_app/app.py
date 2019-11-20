@@ -40,4 +40,4 @@ def scrapper():
 
 # Define main behavior
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
